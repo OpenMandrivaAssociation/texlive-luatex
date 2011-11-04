@@ -1,3 +1,9 @@
+# revision 23398
+# category TLCore
+# catalog-ctan /systems/luatex/base
+# catalog-date 2011-06-07 11:25:20 +0200
+# catalog-license gpl2
+# catalog-version 0.70.1
 Name:		texlive-luatex
 Version:	0.70.1
 Release:	1
@@ -67,6 +73,7 @@ absolute stability may not in practice be assumed.
 %doc %{_texmfdir}/doc/man/man1/texlua.man1.pdf
 %doc %{_mandir}/man1/texluac.1*
 %doc %{_texmfdir}/doc/man/man1/texluac.man1.pdf
+%doc %{_tlpkgobjdir}/*.tlpobj
 
 #-----------------------------------------------------------------------
 %prep
@@ -79,6 +86,8 @@ mkdir -p %{buildroot}%{_datadir}
 cp -fpar texmf texmf-dist %{buildroot}%{_datadir}
 mkdir -p %{buildroot}%{_mandir}/man1
 mv %{buildroot}%{_texmfdir}/doc/man/man1/*.1 %{buildroot}%{_mandir}/man1
+mkdir -p %{buildroot}%{_tlpkgobjdir}
+cp -fpa tlpkg/tlpobj/*.tlpobj %{buildroot}%{_tlpkgobjdir}
 mkdir -p %{buildroot}%{_texmf_fmtutil_d}
 cat > %{buildroot}%{_texmf_fmtutil_d}/luatex <<EOF
 luatex luatex language.def,language.dat.lua luatex.ini
