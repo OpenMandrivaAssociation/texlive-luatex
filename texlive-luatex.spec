@@ -15,7 +15,8 @@ Source0:	http://mirrors.ctan.org/systems/texlive/tlnet/archive/luatex.tar.xz
 Source1:	http://mirrors.ctan.org/systems/texlive/tlnet/archive/luatex.doc.tar.xz
 BuildArch:	noarch
 BuildRequires:	texlive-tlpkg
-Requires(post):	texlive-tlpkg
+Requires(pre):	texlive-tlpkg
+Requires(post):	texlive-kpathsea
 Requires:	texlive-luatex.bin
 Conflicts:	texlive-texmf <= 20110705-3
 Conflicts:	texlive-doc <= 20110705-3
@@ -37,8 +38,8 @@ absolute stability may not in practice be assumed.
     %_texmf_mktexlsr_pre
 
 %post
-    %_texmf_fmtutil_post
     %_texmf_mktexlsr_post
+    %_texmf_fmtutil_post
 
 %preun
     if [ $1 -eq 0 ]; then
@@ -48,8 +49,8 @@ absolute stability may not in practice be assumed.
 
 %postun
     if [ $1 -eq 0 ]; then
-	%_texmf_fmtutil_post
 	%_texmf_mktexlsr_post
+	%_texmf_fmtutil_post
     fi
 
 #-----------------------------------------------------------------------
@@ -78,6 +79,20 @@ absolute stability may not in practice be assumed.
 #-----------------------------------------------------------------------
 %prep
 %setup -c -a0 -a1
+
+perl -pi -e 's%^(\s*TEXMFMAIN\s+=\s+").*%$1%{_texmfdir}",%;'				\
+	 -e 's%\bTEXMFCONTEXT\b%TEXMFDIST%g;'						\
+	 -e 's%^(\s*TEXMFDIST\s+=\s+).*%$1"%{_texmfdistdir}",%;'			\
+	 -e 's%^(\s*TEXMFLOCAL\s+=\s+).*%$1"%{_texmflocaldir}",%;'			\
+	 -e 's%^(\s*TEXMFSYSVAR\s+=\s+).*%$1"%{_texmfvardir}",%;'			\
+	 -e 's%^(\s*TEXMFSYSCONFIG\s+=\s+).*%$1"%{_texmfconfdir}",%;'			\
+	 -e 's%^(\s*TEXMFHOME\s+=\s+").*%$1\$HOME/texmf",%;'				\
+	 -e 's%^(\s*TEXMFVAR\s+=\s+").*%$1\$HOME/.texlive2011/texmf-var",%;'		\
+	 -e 's%^(\s*TEXMFCONFIG\s+=\s+").*%$1\$HOME/.texlive2011/texmf-config",%;'	\
+	 -e 's%^(\s*FONTCONFIG_PATH\s+=\s+").*%$1%{_sysconfdir}/fonts",%;'		\
+	 -e 's|^local texmflocal.*$||;'							\
+	 -e 's|^texmflocal.*$||;'							\
+	texmf/web2c/texmfcnf.lua
 
 %build
 
