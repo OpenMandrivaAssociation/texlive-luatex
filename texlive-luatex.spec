@@ -6,7 +6,7 @@
 # catalog-version 0.70.1
 Name:		texlive-luatex
 Version:	0.70.1
-Release:	1
+Release:	2
 Summary:	The LuaTeX engine
 Group:		Publishing
 URL:		http://www.ctan.org/tex-archive/systems/luatex/base
@@ -52,6 +52,7 @@ absolute stability may not in practice be assumed.
 	%_texmf_mktexlsr_post
 	%_texmf_fmtutil_post
     fi
+    rm -fr %{_texmfvardir}/web2c/luatex
 
 #-----------------------------------------------------------------------
 %files
