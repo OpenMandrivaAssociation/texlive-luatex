@@ -6,7 +6,7 @@
 # catalog-version 0.70.1
 Name:		texlive-luatex
 Version:	0.70.1
-Release:	3
+Release:	4
 Summary:	The LuaTeX engine
 Group:		Publishing
 URL:		http://www.ctan.org/tex-archive/systems/luatex/base
@@ -17,8 +17,8 @@ BuildArch:	noarch
 BuildRequires:	texlive-tlpkg
 Requires(pre):	texlive-tlpkg
 Requires(post):	texlive-kpathsea
-Requires:	texlive-luatex.bin
 Requires(post):	texlive-tetex
+Requires:	texlive-luatex.bin
 
 %description
 LuaTeX is an extended version of pdfTeX using Lua as an
@@ -36,9 +36,9 @@ absolute stability may not in practice be assumed.
 
 %postun
     if [ $1 -eq 0 ]; then
+	rm -fr %{_texmfvardir}/web2c/luatex
 	%{_sbindir}/texlive.post
     fi
-    rm -fr %{_texmfvardir}/web2c/luatex
 
 #-----------------------------------------------------------------------
 %files
@@ -89,6 +89,8 @@ mkdir -p %{buildroot}%{_mandir}/man1
 mv %{buildroot}%{_texmfdir}/doc/man/man1/*.1 %{buildroot}%{_mandir}/man1
 mkdir -p %{buildroot}%{_texmf_fmtutil_d}
 cat > %{buildroot}%{_texmf_fmtutil_d}/luatex <<EOF
+#
+# from luatex:
 luatex luatex language.def,language.dat.lua luatex.ini
 dviluatex luatex language.def,language.dat.lua dviluatex.ini
 EOF
