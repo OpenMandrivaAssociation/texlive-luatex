@@ -1,12 +1,12 @@
-# revision 23398
+# revision 26689
 # category TLCore
 # catalog-ctan /systems/luatex/base
-# catalog-date 2011-06-07 11:25:20 +0200
+# catalog-date 2011-11-09 15:33:34 +0100
 # catalog-license gpl2
 # catalog-version 0.70.1
 Name:		texlive-luatex
 Version:	0.70.1
-Release:	4
+Release:	5
 Summary:	The LuaTeX engine
 Group:		Publishing
 URL:		http://www.ctan.org/tex-archive/systems/luatex/base
