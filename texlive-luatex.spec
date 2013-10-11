@@ -1,4 +1,4 @@
-# revision 26689
+# revision 30581
 # category TLCore
 # catalog-ctan /systems/luatex/base
 # catalog-date 2011-11-09 15:33:34 +0100
@@ -6,7 +6,7 @@
 # catalog-version 0.70.1
 Name:		texlive-luatex
 Version:	0.70.1
-Release:	5
+Release:	6
 Summary:	The LuaTeX engine
 Group:		Publishing
 URL:		http://www.ctan.org/tex-archive/systems/luatex/base
@@ -42,9 +42,9 @@ absolute stability may not in practice be assumed.
 
 #-----------------------------------------------------------------------
 %files
-%{_texmfdir}/tex/generic/config/luatex-unicode-letters.tex
-%{_texmfdir}/tex/generic/config/luatexiniconfig.tex
-%{_texmfdir}/web2c/texmfcnf.lua
+%{_texmfdistdir}/tex/generic/config/luatex-unicode-letters.tex
+%{_texmfdistdir}/tex/generic/config/luatexiniconfig.tex
+%{_texmfdistdir}/web2c/texmfcnf.lua
 %_texmf_fmtutil_d/luatex
 %doc %{_texmfdistdir}/doc/luatex/base/fdata.lua
 %doc %{_texmfdistdir}/doc/luatex/base/fdata_epdf.lua
@@ -56,11 +56,11 @@ absolute stability may not in practice be assumed.
 %doc %{_texmfdistdir}/doc/luatex/base/luatexref-t.pdf
 %doc %{_texmfdistdir}/doc/luatex/base/luatexref-t.tex
 %doc %{_mandir}/man1/luatex.1*
-%doc %{_texmfdir}/doc/man/man1/luatex.man1.pdf
+%doc %{_texmfdistdir}/doc/man/man1/luatex.man1.pdf
 %doc %{_mandir}/man1/texlua.1*
-%doc %{_texmfdir}/doc/man/man1/texlua.man1.pdf
+%doc %{_texmfdistdir}/doc/man/man1/texlua.man1.pdf
 %doc %{_mandir}/man1/texluac.1*
-%doc %{_texmfdir}/doc/man/man1/texluac.man1.pdf
+%doc %{_texmfdistdir}/doc/man/man1/texluac.man1.pdf
 
 #-----------------------------------------------------------------------
 %prep
@@ -73,8 +73,8 @@ perl -pi -e 's%^(\s*TEXMFMAIN\s+=\s+").*%$1%{_texmfdir}",%;'				\
 	 -e 's%^(\s*TEXMFSYSVAR\s+=\s+).*%$1"%{_texmfvardir}",%;'			\
 	 -e 's%^(\s*TEXMFSYSCONFIG\s+=\s+).*%$1"%{_texmfconfdir}",%;'			\
 	 -e 's%^(\s*TEXMFHOME\s+=\s+").*%$1\$HOME/texmf",%;'				\
-	 -e 's%^(\s*TEXMFVAR\s+=\s+").*%$1\$HOME/.texlive2011/texmf-var",%;'		\
-	 -e 's%^(\s*TEXMFCONFIG\s+=\s+").*%$1\$HOME/.texlive2011/texmf-config",%;'	\
+	 -e 's%^(\s*TEXMFVAR\s+=\s+").*%$1\$HOME/.texlive2013/texmf-var",%;'		\
+	 -e 's%^(\s*TEXMFCONFIG\s+=\s+").*%$1\$HOME/.texlive2013/texmf-config",%;'	\
 	 -e 's%^(\s*FONTCONFIG_PATH\s+=\s+").*%$1%{_sysconfdir}/fonts",%;'		\
 	 -e 's|^local texmflocal.*$||;'							\
 	 -e 's|^texmflocal.*$||;'							\
@@ -84,9 +84,9 @@ perl -pi -e 's%^(\s*TEXMFMAIN\s+=\s+").*%$1%{_texmfdir}",%;'				\
 
 %install
 mkdir -p %{buildroot}%{_datadir}
-cp -fpar texmf texmf-dist %{buildroot}%{_datadir}
+cp -fpar texmf-dist %{buildroot}%{_datadir}
 mkdir -p %{buildroot}%{_mandir}/man1
-mv %{buildroot}%{_texmfdir}/doc/man/man1/*.1 %{buildroot}%{_mandir}/man1
+mv %{buildroot}%{_texmfdistdir}/doc/man/man1/*.1 %{buildroot}%{_mandir}/man1
 mkdir -p %{buildroot}%{_texmf_fmtutil_d}
 cat > %{buildroot}%{_texmf_fmtutil_d}/luatex <<EOF
 #
