@@ -6,7 +6,7 @@
 # catalog-version 0.70.1
 Name:		texlive-luatex
 Version:	0.70.1
-Release:	6
+Release:	7
 Summary:	The LuaTeX engine
 Group:		Publishing
 URL:		http://www.ctan.org/tex-archive/systems/luatex/base
@@ -66,7 +66,7 @@ absolute stability may not in practice be assumed.
 %prep
 %setup -c -a0 -a1
 
-perl -pi -e 's%^(\s*TEXMFMAIN\s+=\s+").*%$1%{_texmfdir}",%;'				\
+perl -pi -e 's%^(\s*TEXMFMAIN\s+=\s+").*%$1%{_texmfdistdir}",%;'				\
 	 -e 's%\bTEXMFCONTEXT\b%TEXMFDIST%g;'						\
 	 -e 's%^(\s*TEXMFDIST\s+=\s+).*%$1"%{_texmfdistdir}",%;'			\
 	 -e 's%^(\s*TEXMFLOCAL\s+=\s+).*%$1"%{_texmflocaldir}",%;'			\
