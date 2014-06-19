@@ -1,12 +1,12 @@
-# revision 30581
+# revision 33828
 # category TLCore
 # catalog-ctan /systems/luatex/base
-# catalog-date 2011-11-09 15:33:34 +0100
+# catalog-date 2014-02-26 23:03:13 +0100
 # catalog-license gpl2
 # catalog-version 0.70.1
 Name:		texlive-luatex
 Version:	0.70.1
-Release:	13
+Release:	14
 Summary:	The LuaTeX engine
 Group:		Publishing
 URL:		http://www.ctan.org/tex-archive/systems/luatex/base
@@ -93,4 +93,5 @@ cat > %{buildroot}%{_texmf_fmtutil_d}/luatex <<EOF
 # from luatex:
 luatex luatex language.def,language.dat.lua luatex.ini
 dviluatex luatex language.def,language.dat.lua dviluatex.ini
+luajittex luajittex language.def,language.dat.lua luatex.ini
 EOF
