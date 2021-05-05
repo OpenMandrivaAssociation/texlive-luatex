@@ -32,13 +32,13 @@ development; its specification has been declared stable, but
 absolute stability may not in practice be assumed.
 
 %post
-    %{_sbindir}/texlive.post
+%{_sbindir}/texlive.post
 
 %postun
-    if [ $1 -eq 0 ]; then
-	rm -fr %{_texmfvardir}/web2c/luatex
-	%{_sbindir}/texlive.post
-    fi
+if [ $1 -eq 0 ]; then
+    rm -fr %{_texmfvardir}/web2c/luatex
+    %{_sbindir}/texlive.post
+fi
 
 #-----------------------------------------------------------------------
 %files
