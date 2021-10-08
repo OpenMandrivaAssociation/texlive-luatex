@@ -46,21 +46,14 @@ fi
 %{_texmfdistdir}/tex/generic/config/luatexiniconfig.tex
 %{_texmfdistdir}/web2c/texmfcnf.lua
 %_texmf_fmtutil_d/luatex
-%doc %{_texmfdistdir}/doc/luatex/base/fdata.lua
-%doc %{_texmfdistdir}/doc/luatex/base/fdata_epdf.lua
-%doc %{_texmfdistdir}/doc/luatex/base/fdata_img.lua
-%doc %{_texmfdistdir}/doc/luatex/base/functionref.pdf
-%doc %{_texmfdistdir}/doc/luatex/base/functionref.tex
-%doc %{_texmfdistdir}/doc/luatex/base/luatex.man
-%doc %{_texmfdistdir}/doc/luatex/base/luatexref-env.tex
-%doc %{_texmfdistdir}/doc/luatex/base/luatexref-t.pdf
-%doc %{_texmfdistdir}/doc/luatex/base/luatexref-t.tex
-%doc %{_mandir}/man1/luatex.1*
+%{_texmfdistdir}/doc/luatex
+%doc %{_mandir}/man1/*luatex.1*
 %doc %{_texmfdistdir}/doc/man/man1/luatex.man1.pdf
 %doc %{_mandir}/man1/texlua.1*
 %doc %{_texmfdistdir}/doc/man/man1/texlua.man1.pdf
 %doc %{_mandir}/man1/texluac.1*
 %doc %{_texmfdistdir}/doc/man/man1/texluac.man1.pdf
+%doc %{_texmfdistdir}/doc/man/man1/dviluatex.man1.pdf
 
 #-----------------------------------------------------------------------
 %prep
