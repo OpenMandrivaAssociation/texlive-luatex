@@ -1,18 +1,12 @@
-# revision 33828
-# category TLCore
-# catalog-ctan /systems/luatex/base
-# catalog-date 2014-02-26 23:03:13 +0100
-# catalog-license gpl2
-# catalog-version 0.70.1
 Name:		texlive-luatex
-Version:	0.70.1
-Release:	19
+Version:	64839
+Release:	1
 Summary:	The LuaTeX engine
 Group:		Publishing
 URL:		http://www.ctan.org/tex-archive/systems/luatex/base
 License:	GPL2
-Source0:	http://mirrors.ctan.org/systems/texlive/tlnet/archive/luatex.tar.xz
-Source1:	http://mirrors.ctan.org/systems/texlive/tlnet/archive/luatex.doc.tar.xz
+Source0:	http://mirrors.ctan.org/systems/texlive/tlnet/archive/luatex.r%{version}.tar.xz
+Source1:	http://mirrors.ctan.org/systems/texlive/tlnet/archive/luatex.doc.r%{version}.tar.xz
 BuildArch:	noarch
 BuildRequires:	texlive-tlpkg
 Requires(pre):	texlive-tlpkg
@@ -36,8 +30,8 @@ absolute stability may not in practice be assumed.
 
 %postun
 if [ $1 -eq 0 ]; then
-    rm -fr %{_texmfvardir}/web2c/luatex
-    %{_sbindir}/texlive.post
+rm -fr %{_texmfvardir}/web2c/luatex
+%{_sbindir}/texlive.post
 fi
 
 #-----------------------------------------------------------------------
@@ -57,7 +51,7 @@ fi
 
 #-----------------------------------------------------------------------
 %prep
-%setup -c -a0 -a1
+%autosetup -p1 -c -a1
 
 perl -pi -e 's%^(\s*TEXMFMAIN\s+=\s+").*%$1%{_texmfdistdir}",%;'				\
 	 -e 's%\bTEXMFCONTEXT\b%TEXMFDIST%g;'						\
