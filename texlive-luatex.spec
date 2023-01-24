@@ -1,5 +1,5 @@
 Name:		texlive-luatex
-Version:	64839
+Version:	65574
 Release:	1
 Summary:	The LuaTeX engine
 Group:		Publishing
