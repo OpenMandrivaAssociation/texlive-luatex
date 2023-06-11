@@ -1,6 +1,6 @@
 Name:		texlive-luatex
-Version:	65574
-Release:	2
+Version:	66967
+Release:	1
 Summary:	The LuaTeX engine
 Group:		Publishing
 URL:		http://www.ctan.org/tex-archive/systems/luatex/base
